@@ -31,4 +31,17 @@ class NewsApi {
     }).toList();
     return articleList;
   }
+
+  Future<List<Article>> fetchDataFromApiToSearch(String search) async{
+    http.Response res = await http.get(Uri.parse("https://newsapi.org/v2/everything?q=$search&apiKey=$apiKey"));
+    if(res.statusCode!=200)
+      return null;
+    var data = jsonDecode(res.body);
+    ArticlesList articlesListFromApi= ArticlesList.fromJson(data);
+    List<Article> articleList = articlesListFromApi.Articles.map((e){
+      return Article.fromJson(e);
+    }).toList();
+    return articleList;
+  }
+
 }

@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ArticleWidget extends StatefulWidget {
-  final String imageUrl;
+  String imageUrl;
   final String title;
   final String publishDate;
 
@@ -13,8 +15,13 @@ class ArticleWidget extends StatefulWidget {
   @override
   _ArticleWidgetState createState() => _ArticleWidgetState();
 }
-
 class _ArticleWidgetState extends State<ArticleWidget> {
+  @override
+  void initState() {
+
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     Size _mediaQuery = MediaQuery.of(context).size;
@@ -35,9 +42,9 @@ class _ArticleWidgetState extends State<ArticleWidget> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         image: DecorationImage(
-                          onError: (error ,rr){
-                            print(error);
-                            print(rr);
+                          onError: ( Object error ,StackTrace errorr){
+                            errorr.toString().isEmpty?null:widget.imageUrl=null;
+                            error.toString().isEmpty?null:widget.imageUrl=null;
                           },
                             fit: BoxFit.cover,
                             image: widget.imageUrl == null

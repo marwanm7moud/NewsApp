@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/viewmodels/MainScreenProvider.dart';
+import 'package:newsapp/viewmodels/SearchScreenProvider.dart';
 import 'view/HomeScreen/HomeScreen.dart';
 import 'package:newsapp/viewmodels/HomeScreenProvider.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ void main() {
           providers: [
             ChangeNotifierProvider<MainScreenProvider>(create: (_)=>MainScreenProvider()),
             ChangeNotifierProvider<HomeScreenProvider>(create: (_)=>HomeScreenProvider()),
+            ChangeNotifierProvider<SearchScreenProvider>(create: (_)=>SearchScreenProvider()),
           ],
         child: MyApp(),
 
@@ -42,9 +44,29 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
           elevation: 0
-        )
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+              borderSide:BorderSide(color: Colors.black) ,
+              borderRadius: BorderRadius.circular(15)
+          ),
+          border: OutlineInputBorder(
+              borderSide:BorderSide(color: Colors.black) ,
+              borderRadius: BorderRadius.circular(15)
+          ),
+        ),
       ),
       darkTheme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+              borderSide:BorderSide(color: Colors.white) ,
+              borderRadius: BorderRadius.circular(15)
+          ),
+          border: OutlineInputBorder(
+              borderSide:BorderSide(color: Colors.white) ,
+              borderRadius: BorderRadius.circular(15)
+          ),
+        ),
 
         canvasColor: Colors.grey[900],
 
