@@ -1,9 +1,12 @@
 package com.awesome.newsapp.presentation.navigation
 
+import com.awesome.newsapp.presentation.screens.home.ArticleUiState
 import kotlinx.serialization.Serializable
 
 @Serializable
-object HomeScreenNavigator
+data object HomeScreenNavigator
 
 @Serializable
-object ArticleDetailsScreenNavigator
+data class ArticleDetailsScreenNavigator(
+    val article: ArticleUiState
+)

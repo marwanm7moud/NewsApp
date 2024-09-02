@@ -31,7 +31,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -42,24 +41,26 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
 import com.awesome.newsapp.R
+import com.awesome.newsapp.presentation.navigation.ArticleDetailsScreenNavigator
 import com.awesome.newsapp.presentation.utils.formatTimeAgo
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(
+    navHostController: NavHostController,
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     val state by homeViewModel.state.collectAsState()
-
     HomeContent(
         state = state,
         handleIntent = { intent ->
             when (intent) {
                 is HomeIntent.NavigateToArticleDetails -> {
-                    //todo navigate to article Details
+                    navHostController.navigate(ArticleDetailsScreenNavigator(intent.article))
                 }
                 else -> homeViewModel.handleIntent(intent)
             }
@@ -133,7 +134,13 @@ fun HomeContent(
                                     .fillMaxWidth()
                                     .background(Color.White, RoundedCornerShape(8.dp))
                                     .clip(RoundedCornerShape(8.dp))
-                                    .clickable { handleIntent(HomeIntent.NavigateToArticleDetails(article)) },
+                                    .clickable {
+                                        handleIntent(
+                                            HomeIntent.NavigateToArticleDetails(
+                                                article
+                                            )
+                                        )
+                                    },
                                 contentAlignment = Alignment.CenterStart
                             ) {
                                 Row(

@@ -1,6 +1,7 @@
 package com.awesome.newsapp.presentation.screens.home
 
 import com.awesome.newsapp.domain.entity.Article
+import kotlinx.serialization.Serializable
 
 data class HomeViewState(
     val isLoading: Boolean = false,
@@ -9,6 +10,7 @@ data class HomeViewState(
     val errorMessage: String? = null
 )
 
+@Serializable
 data class ArticleUiState(
     val author: String,
     val content: String,
