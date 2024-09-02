@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.awesome.newsapp.presentation.article_detials.ArticleDetailsScreen
-import com.awesome.newsapp.presentation.home.HomeScreen
+import com.awesome.newsapp.presentation.screens.article_detials.ArticleDetailsScreen
+import com.awesome.newsapp.presentation.screens.home.HomeScreen
 
 @Composable
 fun NewsNavigationHost() {

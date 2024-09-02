@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.home
+package com.awesome.newsapp.presentation.screens.home
 
 import com.awesome.newsapp.domain.entity.Article
 
