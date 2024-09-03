@@ -13,5 +13,3 @@ fun ArticleDto?.toDomain() = Article(
     url = this?.url ?: "",
     urlToImage = this?.urlToImage ?: "",
 )
-
-fun List<ArticleDto>?.toDomain() = this?.map { it.toDomain() }

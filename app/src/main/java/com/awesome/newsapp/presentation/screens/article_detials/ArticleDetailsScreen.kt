@@ -6,14 +6,15 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -25,9 +26,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.awesome.newsapp.R
-import com.awesome.newsapp.presentation.navigation.ArticleDetailsScreenNavigator
 import com.awesome.newsapp.presentation.screens.home.ArticleUiState
-import com.awesome.newsapp.presentation.screens.home.HomeIntent
 import com.awesome.newsapp.presentation.utils.formatIsoDateToDateTime
 import com.awesome.newsapp.presentation.utils.formatTimeAgo
 
@@ -44,9 +43,7 @@ fun ArticleDetailsScreen(
         article = article,
         handleIntent = { intent ->
             when (intent) {
-                ArticleDetailsIntent.NavigateBack -> {
-                    navController.popBackStack()
-                }
+                ArticleDetailsIntent.NavigateBack -> navController.navigateUp()
 
                 is ArticleDetailsIntent.OpenBrowserToReadFullArticle -> {
                     val openBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(intent.articleUrl))
@@ -111,7 +108,8 @@ fun ArticleDetailsContent(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp),
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop,
                 error = rememberAsyncImagePainter(model = R.drawable.ic_broken_image)
             )

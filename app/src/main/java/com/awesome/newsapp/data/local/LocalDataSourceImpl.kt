@@ -1,7 +1,6 @@
 package com.awesome.newsapp.data.local
 
 import com.awesome.newsapp.data.local.model.ArticleEntity
-import com.awesome.newsapp.data.remote.model.ArticleDto
 import com.awesome.newsapp.data.repositoryImpl.source.LocalDataSource
 import javax.inject.Inject
 
