@@ -19,13 +19,19 @@ class HomeViewModel @Inject constructor(
         when (intent) {
             is HomeIntent.LoadNewsByCategory -> loadNews(intent.category.displayName)
             is HomeIntent.ChangeCurrentCategory -> changeCurrentCategory(intent.category)
-            is HomeIntent.ShowError -> showError(intent.message)
+            is HomeIntent.ShowError -> showError(intent.error)
             else -> {}
         }
     }
 
     private fun changeCurrentCategory(category: NewsCategory) {
-        updateState { it.copy(currentCategory = category, articles = emptyList() , errorMessage = null) }
+        updateState {
+            it.copy(
+                currentCategory = category,
+                articles = emptyList(),
+                errorMessage = null
+            )
+        }
         loadNews(category.displayName)
     }
 
@@ -37,26 +43,28 @@ class HomeViewModel @Inject constructor(
             function = { getArticlesUseCase(category) },
             onSuccess = { articles ->
                 updateState { state ->
-                    state.copy(articles = articles.map { it.toUIModel() } , errorMessage = null , isLoading = false)
+                    state.copy(articles = articles.map { it.toUIModel() },
+                        errorMessage = null,
+                        isLoading = false)
                 }
             },
             onError = { error ->
-                updateState {
-                    it.copy(
-                        isLoading = false,
-                        errorMessage = when (error) {
-                            is ErrorState.UnknownError -> error.message.toString()
-                            is ErrorState.ServerError -> error.message.toString()
-                            is ErrorState.NetworkError -> error.message.toString()
-                            is ErrorState.EmptyData -> error.message.toString()
-                        }
-                    )
-                }
+                handleIntent(HomeIntent.ShowError(error))
             }
         )
     }
 
-    private fun showError(message: String) {
-        updateState { state -> state.copy(errorMessage = message) }
+    private fun showError(errorState: ErrorState) {
+        updateState {
+            it.copy(
+                isLoading = false,
+                errorMessage = when (errorState) {
+                    is ErrorState.UnknownError -> errorState.message.toString()
+                    is ErrorState.ServerError -> errorState.message.toString()
+                    is ErrorState.NetworkError -> errorState.message.toString()
+                    is ErrorState.EmptyData -> errorState.message.toString()
+                }
+            )
+        }
     }
 }
