@@ -11,7 +11,7 @@ import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(
+class RetrofitDataSource @Inject constructor(
     private val apiService: NewsApiService
 ) : RemoteDataSource {
     override suspend fun getArticlesByCategory(category: String): ArticleResponse {

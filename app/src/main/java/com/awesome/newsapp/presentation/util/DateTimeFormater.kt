@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.utils
+package com.awesome.newsapp.presentation.util
 
 import android.os.Build
 import androidx.annotation.RequiresApi

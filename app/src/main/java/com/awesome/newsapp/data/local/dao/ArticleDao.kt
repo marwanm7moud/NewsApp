@@ -1,4 +1,4 @@
-package com.awesome.newsapp.data.local
+package com.awesome.newsapp.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

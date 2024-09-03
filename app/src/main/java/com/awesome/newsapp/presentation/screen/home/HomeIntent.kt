@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.screens.home
+package com.awesome.newsapp.presentation.screen.home
 
 sealed interface HomeIntent{
     data class NavigateToArticleDetails(val article: ArticleUiState) : HomeIntent

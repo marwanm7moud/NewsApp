@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.screens.home
+package com.awesome.newsapp.presentation.screen.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -45,8 +45,8 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.awesome.newsapp.R
 import com.awesome.newsapp.presentation.navigation.ArticleDetailsScreenNavigator
-import com.awesome.newsapp.presentation.utils.formatIsoDateToDateTime
-import com.awesome.newsapp.presentation.utils.formatTimeAgo
+import com.awesome.newsapp.presentation.util.formatIsoDateToDateTime
+import com.awesome.newsapp.presentation.util.formatTimeAgo
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

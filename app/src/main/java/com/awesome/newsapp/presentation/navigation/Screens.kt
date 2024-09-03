@@ -1,6 +1,6 @@
 package com.awesome.newsapp.presentation.navigation
 
-import com.awesome.newsapp.presentation.screens.home.ArticleUiState
+import com.awesome.newsapp.presentation.screen.home.ArticleUiState
 import kotlinx.serialization.Serializable
 
 @Serializable

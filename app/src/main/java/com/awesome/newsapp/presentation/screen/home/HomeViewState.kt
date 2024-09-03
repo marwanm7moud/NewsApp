@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.screens.home
+package com.awesome.newsapp.presentation.screen.home
 
 import com.awesome.newsapp.domain.entity.Article
 import kotlinx.serialization.Serializable

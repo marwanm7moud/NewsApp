@@ -1,4 +1,4 @@
-package com.awesome.newsapp.ui.theme
+package com.awesome.newsapp.presentation.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.screens.article_detials
+package com.awesome.newsapp.presentation.screen.article_detials
 
 import android.content.Intent
 import android.net.Uri
@@ -26,9 +26,9 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.awesome.newsapp.R
-import com.awesome.newsapp.presentation.screens.home.ArticleUiState
-import com.awesome.newsapp.presentation.utils.formatIsoDateToDateTime
-import com.awesome.newsapp.presentation.utils.formatTimeAgo
+import com.awesome.newsapp.presentation.screen.home.ArticleUiState
+import com.awesome.newsapp.presentation.util.formatIsoDateToDateTime
+import com.awesome.newsapp.presentation.util.formatTimeAgo
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

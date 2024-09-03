@@ -3,11 +3,11 @@ package com.awesome.newsapp.presentation.navigation
 import android.net.Uri
 import android.os.Bundle
 import androidx.navigation.NavType
-import com.awesome.newsapp.presentation.screens.home.ArticleUiState
+import com.awesome.newsapp.presentation.screen.home.ArticleUiState
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-object CustomNavType {
+object NewsCustomNavType {
     val article = object : NavType<ArticleUiState>(
         isNullableAllowed = false
     ) {

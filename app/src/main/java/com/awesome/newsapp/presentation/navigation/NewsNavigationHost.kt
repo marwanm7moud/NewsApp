@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.awesome.newsapp.presentation.screens.article_detials.ArticleDetailsScreen
-import com.awesome.newsapp.presentation.screens.home.ArticleUiState
-import com.awesome.newsapp.presentation.screens.home.HomeScreen
+import com.awesome.newsapp.presentation.screen.article_detials.ArticleDetailsScreen
+import com.awesome.newsapp.presentation.screen.home.ArticleUiState
+import com.awesome.newsapp.presentation.screen.home.HomeScreen
 import kotlin.reflect.typeOf
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -22,7 +22,7 @@ fun NewsNavigationHost() {
         }
         composable<ArticleDetailsScreenNavigator>(
             typeMap = mapOf(
-                typeOf<ArticleUiState>() to CustomNavType.article
+                typeOf<ArticleUiState>() to NewsCustomNavType.article
             )
         ) {
             val argument = it.toRoute<ArticleDetailsScreenNavigator>()

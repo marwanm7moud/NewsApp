@@ -20,13 +20,13 @@ fun ArticleEntity.toDomain(): Article {
 fun ArticleDto.toEntity(category: String): ArticleEntity {
     return ArticleEntity(
         url = this.url ?: "",
-        sourceName = this.source?.name?: "",
-        author = this.author?: "",
-        title = this.title?: "",
+        sourceName = this.source?.name?: "N/A",
+        author = this.author?: "UnKnown",
+        title = this.title?: "N/A",
         description = this.description?: "",
         urlToImage = this.urlToImage?: "",
         publishedAt = this.publishedAt?: "",
-        content = this.content?: "",
+        content = this.content?: "N/A",
         category = category
     )
 }

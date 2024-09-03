@@ -1,7 +1,7 @@
 package com.awesome.newsapp.di
 
-import com.awesome.newsapp.data.local.LocalDataSourceImpl
-import com.awesome.newsapp.data.remote.RemoteDataSourceImpl
+import com.awesome.newsapp.data.local.RoomDataBaseDataSource
+import com.awesome.newsapp.data.remote.RetrofitDataSource
 import com.awesome.newsapp.data.repositoryImpl.source.LocalDataSource
 import com.awesome.newsapp.data.repositoryImpl.source.RemoteDataSource
 import dagger.Binds
@@ -15,9 +15,9 @@ import javax.inject.Singleton
 abstract class DataSourceModule {
     @Singleton
     @Binds
-    abstract fun bindRemoteDataSource(remoteDataSource: RemoteDataSourceImpl): RemoteDataSource
+    abstract fun bindRemoteDataSource(remoteDataSource: RetrofitDataSource): RemoteDataSource
 
     @Singleton
     @Binds
-    abstract fun bindLocalDataSource(localDataSource: LocalDataSourceImpl): LocalDataSource
+    abstract fun bindLocalDataSource(localDataSource: RoomDataBaseDataSource): LocalDataSource
 }

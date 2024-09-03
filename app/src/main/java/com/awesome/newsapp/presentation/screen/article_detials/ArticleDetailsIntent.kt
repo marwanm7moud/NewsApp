@@ -1,4 +1,4 @@
-package com.awesome.newsapp.presentation.screens.article_detials
+package com.awesome.newsapp.presentation.screen.article_detials
 
 sealed interface ArticleDetailsIntent{
     data object NavigateBack : ArticleDetailsIntent

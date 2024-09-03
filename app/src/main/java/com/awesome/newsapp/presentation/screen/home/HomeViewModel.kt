@@ -1,6 +1,6 @@
-package com.awesome.newsapp.presentation.screens.home
+package com.awesome.newsapp.presentation.screen.home
 
-import com.awesome.newsapp.domain.usecases.GetArticlesUseCase
+import com.awesome.newsapp.domain.usecase.GetArticlesUseCase
 import com.awesome.newsapp.presentation.base.BaseViewModel
 import com.awesome.newsapp.presentation.base.ErrorState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,7 +34,7 @@ class HomeViewModel @Inject constructor(
             state.copy(isLoading = true)
         }
         tryToExecute(
-            function = { getArticlesUseCase.getArticlesByCategory(category) },
+            function = { getArticlesUseCase(category) },
             onSuccess = { articles ->
                 updateState { state ->
                     state.copy(articles = articles.map { it.toUIModel() } , errorMessage = null , isLoading = false)

@@ -2,7 +2,7 @@ package com.awesome.newsapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.awesome.newsapp.data.local.ArticleDao
+import com.awesome.newsapp.data.local.dao.ArticleDao
 import com.awesome.newsapp.data.local.NewsDatabase
 import dagger.Module
 import dagger.Provides
