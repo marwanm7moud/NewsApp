@@ -46,6 +46,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.awesome.newsapp.R
 import com.awesome.newsapp.presentation.navigation.ArticleDetailsScreenNavigator
+import com.awesome.newsapp.presentation.utils.formatIsoDateToDateTime
 import com.awesome.newsapp.presentation.utils.formatTimeAgo
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -173,7 +174,7 @@ fun HomeContent(
                                                 )
                                             )
                                             Text(
-                                                text = formatTimeAgo(article.publishedAt),
+                                                text = formatTimeAgo(formatIsoDateToDateTime(article.publishedAt)),
                                                 style = TextStyle(
                                                     color = Color(0xFF3C3C3C),
                                                     fontSize = 12.sp

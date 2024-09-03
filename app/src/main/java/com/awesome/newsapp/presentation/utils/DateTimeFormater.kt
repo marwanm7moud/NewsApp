@@ -4,15 +4,22 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
 import java.time.Duration
 
-@RequiresApi(Build.VERSION_CODES.O)
-fun formatTimeAgo(isoDate: String): String {
-    val formatter = DateTimeFormatter.ISO_DATE_TIME
-    val dateTime = ZonedDateTime.parse(isoDate, formatter)
-    val now = ZonedDateTime.now()
 
+@RequiresApi(Build.VERSION_CODES.O)
+fun formatIsoDateToDateTime(isoDate: String): ZonedDateTime {
+    return try {
+        val formatter = DateTimeFormatter.ISO_DATE_TIME
+        ZonedDateTime.parse(isoDate, formatter)
+    } catch (e: Exception) {
+        ZonedDateTime.now()
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun formatTimeAgo(dateTime: ZonedDateTime): String {
+    val now = ZonedDateTime.now()
     val duration = Duration.between(dateTime, now)
 
     return when {
